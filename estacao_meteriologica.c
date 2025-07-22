@@ -27,9 +27,10 @@
 #define I2C_SCL_DISP 15
 #define endereco 0x3C
 
-#define WIFI_SSID ""
-#define WIFI_PASSWORD ""
+#define WIFI_SSID "" // Substitua pelo SSID da sua rede Wi-Fi
+#define WIFI_PASSWORD "" // Substitua pela senha da sua rede Wi-Fi
 
+// LEDs e buzzer
 #define GREEN_LED 11
 #define BLUE_LED 12
 #define RED_LED 13
@@ -38,12 +39,12 @@
 typedef struct {
     float temperatura;
     float umidade;
-} AHT20;
+} AHT20; // Estrutura para armazenar os dados do AHT20
 
 typedef struct {
     float temperatura;
     float pressao;
-} BMP280;
+} BMP280; // Estrutura para armazenar os dados do BMP280
 
 typedef struct {
     float minTemp;
@@ -53,7 +54,7 @@ typedef struct {
     float offsetTemp;
     float offsetHum;
     float offsetPress;
-} ConfigData;
+} ConfigData; // Estrutura para armazenar os dados de configuração
 
 ConfigData config_data = {
     .minTemp = 20,
@@ -80,13 +81,13 @@ typedef enum {
     TEMPERATURA_LIMITES,
     UMIDADE_LIMITES,
     OFFSET
-} PAGES;
+} PAGES; // Enumeração para as páginas do site
 
 typedef enum {
     NORMAL,
     ACIMA,
     ABAIXO
-} STATUS;
+} STATUS; // Status do sistema
 
 PAGES current_page = INDEX; // Página atual
 
@@ -115,6 +116,7 @@ double calculate_altitude(double pressure)
 #define JOYSTICK_BUTTON 22
 void gpio_irq_handler(uint gpio, uint32_t events);
 
+// Função para configurar o Wi-Fi
 static err_t http_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
 {
     struct http_state *hs = (struct http_state *)arg;
@@ -148,6 +150,7 @@ static err_t http_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
     return ERR_OK;
 }
 
+// Função para receber requisições HTTP
 static err_t http_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err)
 {
     if (!p)
@@ -363,12 +366,14 @@ static err_t http_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t er
     return ERR_OK;
 }
 
+// Função de callback para aceitar conexões TCP
 static err_t connection_callback(void *arg, struct tcp_pcb *newpcb, err_t err)
 {
     tcp_recv(newpcb, http_recv);
     return ERR_OK;
 }
 
+// Função para iniciar o servidor HTTP
 static void start_http_server(void)
 {
     struct tcp_pcb *pcb = tcp_new();
