@@ -604,7 +604,7 @@ int main()
 
             sprintf(str_offset_temp, "Temp: %.1fC", config_data.offsetTemp);
             sprintf(str_offset_hum, "Hum: %.1f%%", config_data.offsetHum);
-            sprintf(str_offset_press, "Press: %.1fhPa", config_data.offsetPress);
+            sprintf(str_offset_press, "Press: %.1fkPa", config_data.offsetPress);
 
             ssd1306_draw_string(&ssd, "OFFSET", xcenter_pos("OFFSET"), 1);   // Desenha uma string
 

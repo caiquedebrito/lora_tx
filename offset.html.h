@@ -5,7 +5,7 @@ const char OFFSET_HTML[] =
 "<div class=\"container\"><form id=\"f2\" class=\"row g-3\">"
 " <div class=\"col-md-4\"><label for=\"offsetTemp\" class=\"form-label\">Offset Temperatura (°C)</label><input id=\"offsetTemp\" class=\"form-control\" type=\"number\" step=\"0.1\" placeholder=\"Ex: 0.0\" required></div>"
 " <div class=\"col-md-4\"><label for=\"offsetHum\" class=\"form-label\">Offset Umidade (%)</label><input id=\"offsetHum\" class=\"form-control\" type=\"number\" step=\"0.1\" placeholder=\"Ex: 0.0\" required></div>"
-" <div class=\"col-md-4\"><label for=\"offsetPres\" class=\"form-label\">Offset Pressão (hPa)</label><input id=\"offsetPres\" class=\"form-control\" type=\"number\" step=\"0.1\" placeholder=\"Ex: 0.0\" required></div>"
+" <div class=\"col-md-4\"><label for=\"offsetPres\" class=\"form-label\">Offset Pressão (kPa)</label><input id=\"offsetPres\" class=\"form-control\" type=\"number\" step=\"0.1\" placeholder=\"Ex: 0.0\" required></div>"
 " <div class=\"col-12\"><button class=\"btn btn-primary w-100\" type=\"submit\">Salvar Configurações</button></div>"
 "</form></div>"
 "<script>"
