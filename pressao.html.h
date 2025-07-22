@@ -1,0 +1,15 @@
+const char PRESSAO_HTML[] = 
+"<!DOCTYPE html>\n"
+"<html lang=\"pt-BR\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Pressão</title><link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\"><script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script><style>body{background:#f5f7fa}.navbar{margin-bottom:1rem}canvas{width:100%!important;height:auto!important}</style></head><body>\n"
+"<nav class=\"navbar navbar-expand-lg navbar-light bg-white shadow-sm\"><div class=\"container-fluid\"><a class=\"navbar-brand\" href=\"#\">MeteoStation</a><ul class=\"navbar-nav\"><li class=\"nav-item\"><a class=\"nav-link\" href=\"\\\">Dashboard</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"\\temperatura\">Temperatura</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"\\umidade\">Umidade</a></li><li class=\"nav-item\"><a class=\"nav-link active\" href=\"\\pressao\">Pressão</a></li><li class=\"nav-item dropdown\"><a class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\" href=\"#\">Configurações</a><ul class=\"dropdown-menu\"><li><a class=\"dropdown-item\" href=\"\\limites\">Limites</a></li><li><a class=\"dropdown-item\" href=\"\\offset\">Offsets</a></li></ul></li></ul></div></nav>\n"
+"<div class=\"container\"><canvas id=\"chart-pres\"></canvas></div>\n"
+"<script>\n"
+"async function fetchData(){let r=await fetch('/data');return r.ok?r.json():null;}\n"
+"const L3=[],P3=[],M3=30,ctx3=document.getElementById('chart-pres').getContext('2d');\n"
+"const C3=new Chart(ctx3,{type:'line',data:{labels:L3,datasets:[{label:'Pressão',data:P3,tension:.4}]},options:{responsive:!0}});\n"
+"async function u3(){let d=await fetchData();if(!d)return;let t=new Date().toLocaleTimeString();L3.push(t);P3.push(d.pressure);if(L3.length>M3){L3.shift();P3.shift()}C3.update()}\n"
+"window.addEventListener('load',()=>{u3();setInterval(u3,2000)});\n"
+"</script>\n"
+"<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js\"></script>\n"
+"</body></html>"
+;
